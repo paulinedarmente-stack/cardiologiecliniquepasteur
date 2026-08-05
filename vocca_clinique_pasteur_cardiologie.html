@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocca × Clinique Pasteur — Cardiologie</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f2d4b; --ink-2:#1a3d62; --teal:#1FA197; --blue:#1070B0; --gold:#ffb41e;
+    --paper:#FFFFFF; --mist:#F4F8FB; --line:#E3ECF2; --muted:#5C7185;
+    --wire:linear-gradient(90deg,#1FA197 0%,#1070B0 55%,#ffb41e 100%);
+    --maxw:1080px;
+    --shadow:0 1px 2px rgba(15,45,75,.04),0 12px 40px rgba(15,45,75,.06);
+    --cp-navy:#1C3849; --cp-accent:#43667F; --cp-gold:#C9863F; --cp-mist:#EEF3F5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0}
+  p{margin:0 0 1em}
+  a{color:var(--blue);text-decoration:none}
+  .mono{font-family:"IBM Plex Mono",monospace;font-weight:500}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--wire);border-radius:2px}
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+  .brands{display:flex;align-items:center;gap:18px}
+  .vocca-mark{font-family:"Bricolage Grotesque";font-weight:800;font-size:26px;letter-spacing:-.04em;color:var(--ink);display:flex;align-items:center;gap:7px}
+  .vocca-mark .dot{width:9px;height:9px;border-radius:50%;background:var(--wire)}
+  .x{color:var(--muted);font-weight:400;font-size:18px;font-family:"Inter"}
+  .client-mark{display:flex;align-items:center;gap:10px}
+  .client-mark .txt{display:flex;flex-direction:column;line-height:1.15}
+  .client-mark .txt b{font-family:"Bricolage Grotesque";font-weight:700;font-size:15px;color:var(--cp-navy)}
+  .client-mark .txt span{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono";letter-spacing:.06em;text-transform:uppercase}
+  .conf-pill{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 13px;white-space:nowrap}
+  @media(max-width:720px){.conf-pill{display:none}}
+  .hero{position:relative;padding:96px 0 64px;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{font-size:clamp(36px,5.6vw,62px);max-width:20ch}
+  .hero h1 .grad{background:var(--wire);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(18px,2.2vw,21px);color:var(--ink-2);max-width:60ch;margin-top:24px}
+  .prep{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14.5px;color:var(--muted)}
+  .prep b{color:var(--ink);font-weight:600}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:48px}
+  .stat{background:var(--paper);padding:24px 22px}
+  .stat .n{font-family:"Bricolage Grotesque";font-weight:700;font-size:28px;letter-spacing:-.03em;line-height:1}
+  .stat .n .u{font-size:15px;color:var(--muted);font-weight:600;margin-left:3px}
+  .stat .l{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.4}
+  @media(max-width:720px){.stat-row{grid-template-columns:1fr 1fr}}
+  .wire-svg{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.85}
+  .hero-bg{position:absolute;top:-30%;right:-10%;width:780px;height:780px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(31,161,151,.10),rgba(16,112,176,.06) 45%,transparent 70%);z-index:0}
+  section{padding:76px 0;position:relative}
+  .section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent);position:relative}
+  .section-divider::after{content:"";position:absolute;left:50%;top:-1px;transform:translateX(-50%);width:120px;height:3px;background:var(--wire);border-radius:3px}
+  .section-head{max-width:64ch;margin-bottom:44px}
+  .section-head h2{font-size:clamp(28px,3.6vw,42px)}
+  .section-head p{color:var(--muted);font-size:18px;margin-top:16px}
+  .alt{background:var(--mist)}
+  .grid-3{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:720px){.grid-3{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+  .card .k{font-family:"IBM Plex Mono";font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px;margin:0}
+  .card .big{font-family:"Bricolage Grotesque";font-weight:700;font-size:32px;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+  .card .big .big-u{font-size:15px;color:var(--muted);font-weight:600}
+  .tel-row{display:flex;justify-content:space-between;align-items:baseline;font-size:14px;color:var(--muted);padding:8px 0;border-top:1px dashed var(--line)}
+  .tel-row:first-of-type{border-top:none;padding-top:0}
+  .tel-row b{color:var(--ink);font-family:"IBM Plex Mono";font-weight:600}
+  .roi-tool{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
+  .roi-label{font-size:13.5px;color:var(--muted);display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+  .roi-label b{font-family:"Bricolage Grotesque";font-weight:700;font-size:20px;color:var(--ink);letter-spacing:-.02em}
+  .roi-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--teal),var(--blue));outline:none;cursor:pointer}
+  .roi-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--paper);border:3px solid var(--blue);box-shadow:0 2px 8px rgba(15,45,75,.20);cursor:pointer;transition:transform .12s}
+  .roi-range::-webkit-slider-thumb:active{transform:scale(1.12)}
+  .roi-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--paper);border:3px solid var(--blue);box-shadow:0 2px 8px rgba(15,45,75,.20);cursor:pointer}
+  .roi-compare{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin-top:18px}
+  .roi-compare .side{background:var(--mist);border-radius:12px;padding:16px 18px;text-align:center}
+  .roi-compare .side.vocca{background:var(--ink);color:#e6eff8}
+  .roi-compare .side .t{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .roi-compare .side.vocca .t{color:#9cb4c8}
+  .roi-compare .side .v{font-family:"Bricolage Grotesque";font-weight:700;font-size:24px;letter-spacing:-.02em}
+  .roi-compare .arrow{font-size:20px;color:var(--muted)}
+  .roi-out{margin-top:16px;background:var(--ink);color:#e6eff8;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .roi-out span{font-size:13px;color:#9cb4c8}
+  .roi-out b{font-family:"Bricolage Grotesque";font-weight:700;font-size:22px;letter-spacing:-.02em;background:var(--wire);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+  .roi-month{margin-top:9px;font-size:12.5px;color:var(--muted);text-align:right}
+  .roi-month span{font-weight:600;color:var(--ink-2)}
+  .sol{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:820px){.sol{grid-template-columns:1fr}}
+  .sol-col{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow)}
+  .sol-col .tag{display:inline-block;font-family:"IBM Plex Mono";font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+  .tag.in{background:rgba(31,161,151,.12);color:#0E7C73}
+  .tag.out{background:rgba(16,112,176,.12);color:#0B5C91}
+  .feat{list-style:none;padding:0;margin:12px 0 0}
+  .feat li{position:relative;padding:10px 0 10px 30px;border-top:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+  .feat li:first-child{border-top:none}
+  .feat li::before{content:"";position:absolute;left:0;top:16px;width:14px;height:14px;border-radius:50%;border:2px solid var(--teal)}
+  .feat b{color:var(--ink);font-weight:600}
+  .feat li.legal{background:rgba(201,134,63,.08);margin:0 -28px;padding:10px 28px 10px 58px;border-top:1px solid var(--line)}
+  .feat li.legal::before{border-color:var(--cp-gold);left:28px}
+  .cmp{width:100%;border-collapse:collapse;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .cmp th,.cmp td{padding:14px 18px;text-align:left;font-size:14px;border-bottom:1px solid var(--line)}
+  .cmp th{font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--mist)}
+  .cmp td:first-child{color:var(--ink-2);font-weight:600;width:34%}
+  .cmp td.yes{color:#0E7C73;font-weight:600}
+  .cmp td.no{color:#9aa7b5}
+  .cmp tr:last-child td{border-bottom:none}
+  .impf{background:var(--ink);color:#e6eff8;border-radius:22px;padding:42px;position:relative;overflow:hidden}
+  .impf::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 85% -10%,rgba(31,161,151,.22),transparent 60%);pointer-events:none}
+  .impf .eyebrow{color:#7FD8CF}
+  .impf .eyebrow::before{background:var(--wire)}
+  .impf h2{color:#fff;font-size:clamp(24px,3.2vw,34px);max-width:22ch;position:relative}
+  .impf .sub{color:#9cb4c8;max-width:60ch;margin-top:14px;position:relative}
+  .impf-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:36px;position:relative}
+  @media(max-width:820px){.impf{padding:30px}.impf-stats{grid-template-columns:1fr 1fr;gap:24px}}
+  .impf-stats .n{font-family:"Bricolage Grotesque";font-weight:700;font-size:32px;letter-spacing:-.03em;line-height:1;background:var(--wire);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .impf-stats .l{color:#9cb4c8;font-size:13px;margin-top:8px;line-height:1.4}
+  .pill-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+  .pill{font-size:13.5px;font-weight:500;color:var(--ink-2);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 15px;display:inline-flex;align-items:center;gap:8px}
+  .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+  .price-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow);display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+  .price-card .node{width:18px;height:18px;border-radius:50%;background:var(--paper);border:3px solid var(--teal);box-shadow:0 0 0 6px rgba(31,161,151,.10);flex:none}
+  .price-card .vol{font-family:"IBM Plex Mono";font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .price-card .price{font-family:"Bricolage Grotesque";font-weight:700;font-size:38px;letter-spacing:-.03em;line-height:1}
+  .price-card .price .ht{font-size:15px;color:var(--muted);font-weight:600}
+  .price-card .note{font-size:13.5px;color:var(--muted);margin-top:6px}
+  .devis{background:var(--ink);color:#e6eff8;border-radius:18px;overflow:hidden;margin-top:22px;box-shadow:var(--shadow)}
+  .devis-head{padding:22px 32px 18px;border-bottom:1px solid rgba(255,255,255,.10)}
+  .devis-label{font-family:"IBM Plex Mono";font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7FD8CF;margin-bottom:6px}
+  .devis-title{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;color:#fff;letter-spacing:-.02em}
+  .devis-rows{padding:8px 32px 22px;display:flex;flex-direction:column;gap:0}
+  .devis-row{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:14.5px;color:#9cb4c8}
+  .devis-row:last-child{border-bottom:none}
+  .devis-row b{color:#fff;font-family:"IBM Plex Mono";font-weight:500;white-space:nowrap}
+  .devis-once{font-family:"IBM Plex Mono";font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cp-gold);background:rgba(201,134,63,.15);padding:2px 8px;border-radius:999px;margin-left:8px;vertical-align:middle}
+  .devis-row.reduc{color:#7FD8CF}
+  .devis-row.reduc b{color:#7FD8CF;font-weight:600}
+  .devis-row.tot{padding-top:16px;margin-top:4px;border-top:2px solid rgba(255,255,255,.14);border-bottom:none}
+  .devis-row.tot span:first-child{font-size:14px;color:#9cb4c8}
+  .devis-row.tot .big{font-family:"Bricolage Grotesque";font-weight:700;font-size:30px;letter-spacing:-.03em;background:var(--wire);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+  .devis-row.tot .big-sub{font-size:14px;font-weight:600;opacity:.7}
+  .devis-note{padding:13px 32px;background:rgba(201,134,63,.08);border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:#9cb4c8}
+  .devis-note b{color:var(--cp-gold)}
+  .gain-card{border-radius:16px;padding:26px;box-shadow:var(--shadow);background:linear-gradient(135deg,var(--cp-navy),#274a5c);color:#e6eff8;border:1px solid rgba(201,134,63,.3);max-width:560px;margin:0 auto}
+  .gain-card .k{font-family:"IBM Plex Mono";font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;color:var(--cp-gold)}
+  .gain-card .big{font-family:"Bricolage Grotesque";font-weight:700;font-size:30px;letter-spacing:-.03em;line-height:1;margin-bottom:8px;background:linear-gradient(90deg,#fff,#ffe9c4);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .gain-card p{font-size:14px;margin:0;color:#c9d7e6}
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:p}
+  @media(max-width:820px){.phases{grid-template-columns:1fr}}
+  .phase{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;box-shadow:var(--shadow)}
+  .phase .num{counter-increment:p;font-family:"IBM Plex Mono";font-weight:600;font-size:13px;color:var(--blue)}
+  .phase .num::before{content:"PHASE 0" counter(p)}
+  .phase h3{font-size:18px;margin:10px 0 8px}
+  .phase p{color:var(--muted);font-size:14px;margin:0}
+  .phase .meta{margin-top:14px;font-family:"IBM Plex Mono";font-size:12px;color:var(--ink-2);font-weight:500}
+  .cond{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  .cond li{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 20px;display:flex;gap:14px;align-items:flex-start;box-shadow:var(--shadow)}
+  .cond li .ic{flex:none;width:32px;height:32px;border-radius:9px;background:rgba(16,112,176,.10);color:var(--blue);display:grid;place-items:center;font-family:"IBM Plex Mono";font-weight:600}
+  .cond li b{font-weight:600}
+  .cond li span{color:var(--muted);font-size:14.5px}
+  .ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  @media(max-width:720px){.ref-grid{grid-template-columns:1fr}}
+  .ref-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:var(--shadow);text-align:center}
+  .ref-card img{max-width:100%;height:52px;object-fit:contain}
+  .ref-name{font-family:"Bricolage Grotesque";font-weight:700;font-size:14.5px;color:var(--ink);line-height:1.3}
+  .ref-loc{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .ref-tel{font-family:"IBM Plex Mono";font-weight:600;font-size:14px;color:var(--blue);margin-top:2px}
+  .ref-note{font-size:12px;color:var(--cp-gold);font-weight:600;margin-top:0}
+  .test-line{margin-top:20px;background:var(--ink);color:#e6eff8;border-radius:14px;padding:18px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+  .test-line .t{font-size:14px;color:#9cb4c8}
+  .test-line .t b{color:#fff}
+  .test-line a{font-family:"IBM Plex Mono";font-weight:600;font-size:17px;color:var(--cp-gold);white-space:nowrap}
+  .sign{margin-top:0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:30px}
+  .sign .from .name{font-family:"Bricolage Grotesque";font-weight:700;font-size:22px}
+  .sign .from .role{color:var(--muted);font-size:14.5px;margin-top:4px}
+  .sign .from .role a{font-weight:500}
+  .sign .vmark{font-family:"Bricolage Grotesque";font-weight:800;font-size:28px;letter-spacing:-.04em;color:var(--ink);display:flex;align-items:center;gap:8px;opacity:.9}
+  .sign .vmark .dot{width:10px;height:10px;border-radius:50%;background:var(--wire)}
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+  [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    [data-reveal]{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+  ::selection{background:rgba(31,161,151,.22)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <div class="brands">
+      <div class="vocca-mark">Vocca<span class="dot"></span></div>
+      <span class="x">&times;</span>
+      <div class="client-mark">
+        <div class="txt"><b>Groupe de Cardiologie</b><span>Clinique Pasteur · Toulouse</span></div>
+      </div>
+    </div>
+    <span class="conf-pill">Document confidentiel</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <svg class="wire-svg" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="wg" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#1FA197"/><stop offset="0.55" stop-color="#1070B0"/><stop offset="1" stop-color="#C9863F"/>
+      </linearGradient>
+    </defs>
+    <path d="M-40 430 C 240 360, 380 520, 640 440 S 1100 320, 1480 420" fill="none" stroke="url(#wg)" stroke-width="2.2" opacity="0.55"/>
+    <path d="M-40 470 C 260 410, 420 560, 700 480 S 1160 380, 1480 470" fill="none" stroke="url(#wg)" stroke-width="1.4" opacity="0.30"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Proposition commerciale · Groupe de Cardiologie</div>
+    <h1>Un secrétariat téléphonique qui décroche <span class="grad">chaque appel, patient comme confrère.</span></h1>
+    <p class="lede">Vocca prend en charge les appels du groupe de cardiologie de la Clinique Pasteur : 100&nbsp;% des appels décrochés, patients et professionnels de santé distingués, tri par praticien et par motif — le secrétariat ne garde que ce qui exige vraiment une intervention humaine.</p>
+    <div class="prep">
+      <span>Préparé pour <b>Mme Dray</b> — Responsable administrative &amp; financière</span>
+      <span>Groupe de Cardiologie — <b>Clinique Pasteur, Toulouse</b></span>
+    </div>
+    <div class="stat-row" data-reveal>
+      <div class="stat"><div class="n">26</div><div class="l">praticiens couverts (17 associés + 9 autres statuts)</div></div>
+      <div class="stat"><div class="n">100<span class="u">%</span></div><div class="l">des appels décrochés, 24h/24, 7j/7</div></div>
+      <div class="stat"><div class="n">75<span class="u">%</span></div><div class="l">des appels traités sans passer par le secrétariat</div></div>
+      <div class="stat"><div class="n">~690<span class="u">&nbsp;h</span></div><div class="l">de temps secrétariat libérées estimées / mois</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap"><div class="section-divider"></div></div>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Le constat</div>
+      <h2>Un secrétariat engagé, mais saturé par le volume.</h2>
+      <p>Le standard (2 postes, lun–ven 9h–18h) gère les appels entrants ; chaque médecin a en plus une secrétaire référente. Un fonctionnement solide, qui montre ses limites au volume constaté.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card" data-reveal>
+        <div class="k">Volume constaté (mars 2026)</div>
+        <div class="big">12 256<span class="big-u">&nbsp;appels / mois</span></div>
+        <h3>4 à 5 minutes par appel en moyenne</h3>
+        <div class="tel-row"><span>Standard</span><b>2 postes, lun–ven 9h–18h</b></div>
+        <div class="tel-row"><span>Secrétariat référent</span><b>1 par praticien</b></div>
+      </div>
+      <div class="card" data-reveal>
+        <div class="k">Ce qui remonte du terrain</div>
+        <h3>Des irritants concrets</h3>
+        <p>Délais d'attente jugés trop longs · aucune visibilité sur les appels non décrochés ou rappelés · patients qui rappellent car les plannings ne sont pas ouverts assez à l'avance · professionnels de santé en attente, encore plus sensible que pour un patient · 1 à 2 rendez-vous non honorés par demi-journée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Ce que Vocca fait pour votre équipe</div>
+      <h2>Une IA calée sur votre organisation — patients et confrères traités différemment, comme aujourd'hui.</h2>
+      <p>Vocca s'appuie sur votre agenda Doctolib comme agenda maître. La démonstration réalisée sur votre environnement l'a montré : reconnaissance du patient, questions de qualification, prise en compte d'une disponibilité ("je ne suis libre que le vendredi"), et <b style="color:var(--ink)">transfert immédiat au secrétariat dès qu'un signal d'urgence est détecté</b> (essoufflement évoqué à l'oral, par exemple).</p>
+    </div>
+    <div class="sol" style="grid-template-columns:1fr">
+      <div class="sol-col in" data-reveal>
+        <span class="tag in">Appels entrants</span>
+        <h3>Décrocher 100&nbsp;%, trier selon vos règles</h3>
+        <ul class="feat">
+          <li>Décrochage <b>24h/24, 7j/7</b>, au-delà des horaires du standard — aucun appel perdu.</li>
+          <li><b>75&nbsp;% des appels automatisés</b>&nbsp;: informations pratiques, prise/modification/annulation de rendez-vous dans Doctolib.</li>
+          <li><b>Tri par praticien et par motif</b>, avec prise en compte des contraintes horaires exprimées à l'oral.</li>
+          <li class="legal"><b>Professionnels de santé identifiés et priorisés</b> — reconnaissance automatique ou option dédiée ("tapez 1 / tapez 2").</li>
+          <li><b>Signal d'urgence clinique détecté à l'oral</b> &rarr; transfert immédiat et prioritaire vers le secrétariat.</li>
+          <li><b>Les 25&nbsp;% restants</b> sont transférés à la secrétaire référente ou déposés en tâche priorisée sur un dashboard.</li>
+          <li><b>Dashboard &amp; enregistrement de tous les appels</b> — la visibilité qui manque aujourd'hui sur les non-décrochés et les rappels.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:16px;font-size:14px;color:var(--muted)" data-reveal><span class="pill" style="margin-right:8px">Inclus</span>Appels sortants&nbsp;: annulation en masse en cas d'absence d'un praticien, confirmation de rendez-vous multicanal (SMS, WhatsApp, appel) selon le motif.</p>
+
+    <div class="grid-3" style="margin-top:36px" data-reveal>
+      <div class="card">
+        <div class="k">01 — Couverture</div>
+        <h3>100&nbsp;% des appels, en continu</h3>
+        <p>Vocca est présent 24h/24, 7j/7, au-delà des horaires 9h–18h du standard, même en cas de pic.</p>
+      </div>
+      <div class="card">
+        <div class="k">02 — Professionnels de santé</div>
+        <h3>Un traitement différencié</h3>
+        <p>Un confrère qui attend est encore plus problématique qu'un patient : Vocca identifie et priorise ces appels.</p>
+      </div>
+      <div class="card">
+        <div class="k">03 — Intégration Doctolib</div>
+        <h3>Compatible avec votre organisation</h3>
+        <p>API Doctolib ouverte, connexion via l'accès mail du secrétariat — sans dépendre d'un accord avec Surgica.</p>
+      </div>
+      <div class="card">
+        <div class="k">04 — Cas sensibles</div>
+        <h3>Une continuité humaine</h3>
+        <p>Un signal d'urgence clinique déclenche un transfert immédiat. Vocca ne décide jamais seul sur ces situations.</p>
+      </div>
+    </div>
+
+    <div class="impf" style="margin-top:20px" data-reveal>
+      <div class="eyebrow">Vocca en pratique</div>
+      <h2>Ce que Vocca fait dès la mise en production.</h2>
+      <div class="impf-stats">
+        <div><div class="n">100%</div><div class="l">des appels décrochés, même en cas de pic simultané</div></div>
+        <div><div class="n">~690h</div><div class="l">de temps secrétariat libérées chaque mois (estimation)</div></div>
+        <div><div class="n">24/7</div><div class="l">disponibilité — au-delà des horaires du standard</div></div>
+        <div><div class="n">J+14</div><div class="l">délai de mise en service après validation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Vocca vs. votre organisation actuelle</div>
+      <h2>L'écart, c'est la disponibilité et la visibilité.</h2>
+    </div>
+    <table class="cmp" data-reveal>
+      <thead><tr><th>Critère</th><th>Standard + secrétariat actuel</th><th>Vocca</th></tr></thead>
+      <tbody>
+        <tr><td>Disponibilité</td><td class="no">Lundi–vendredi, 9h–18h</td><td class="yes">24h/24, 7j/7</td></tr>
+        <tr><td>Distinction patient / professionnel de santé</td><td class="no">Selon la charge du moment</td><td class="yes">Identification systématique</td></tr>
+        <tr><td>Visibilité appels non décrochés / rappels</td><td class="no">Aucune donnée disponible</td><td class="yes">Dashboard en temps réel</td></tr>
+        <tr><td>Ouverture des plannings à l'avance</td><td class="no">Source de rappels répétés</td><td class="yes">Information donnée dès l'appel</td></tr>
+        <tr><td>Intégration Doctolib</td><td class="no">Saisie manuelle</td><td class="yes">Native, via API</td></tr>
+        <tr><td>Signal d'urgence clinique</td><td class="no">Dépend de la disponibilité</td><td class="yes">Transfert immédiat</td></tr>
+        <tr><td>Charge sur les secrétaires référentes</td><td class="no">Débordements fréquents</td><td class="yes">Volume automatisable absorbé</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Nos références en cardiologie</div>
+      <h2>Vocca équipe déjà des services de cardiologie de taille comparable.</h2>
+      <p>Vous avez d'ailleurs déjà testé Vocca vous-même chez le Cabinet de Cardiologie Pau Béarn, avec un retour <b style="color:var(--ink)">« assez performant »</b>.</p>
+    </div>
+
+    <div class="ref-grid" data-reveal>
+      <div class="ref-card">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wgARCADIAMgDASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAYHBAUIAwECCf/EABkBAQADAQEAAAAAAAAAAAAAAAABAgMEBf/aAAwDAQACEAMQAAABo0e15IAAAAAAAAAAAAAAAAAAAAAAAAAAAAABMbiz05sXnIKzzYmEP1zCYAAAAAAAAAt7r3i7pTg7U95zn+WlG1HZFb+jxBfMAAAAAAAAC3uvf55brl6OtsPk3Ii0krP08+rnCagAAAAJrCrKpfKhdpRHO8Q2cz2sqw/Nh6SYhWwnX7Kq+23X1o3eF4y2kwrUWHNk03t89MamN27BiGDXIABttSTttjGETJPHQjdbKJiV/qJIWvVASj2iImGPFxtNnGEpjHteAmoAAF8/dtlcXXX2RKvG1Yd9nUgTpKruOJQhEimUXtWu5bupHKr5ZkYxXMgvPQxMKpnoTnvXMNcgAAMz5u7vy1539ZTrLVlldT7cUvVeT0lU8K/xrEm8xX8RzvW0R9aX4Ky8rD8CJaiRxy9QmoAAF773nTZYbdDQOrPIsiA4PjrTr+uKex8dOlotTvgXdtOf8SXUelojX1m35zzHk2rZdQZeJrmFqgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/EACwQAAICAgECBQMDBQAAAAAAAAQFAwYBAgcAFRMUFjA2ERdAIDNwEiE1N1D/2gAIAQEAAQUC/geqoMWRp9oNOvtrr377QadWlDittfxOLvk/WPnXXKHyj8Tj8SU1/wCnT+nITVdYgFk7MS/iSBP/AMTi75P1j50eBPXi+QD4Gb38QQ0gCX1Q367+y8x6ob9SSbS7+7UVozVuu0rzsyFCcUacrLWTx1dtLrrX2W4ICFg0j7aV5w+vMlkZI0oc84swvSRaFomYkpTAQ600YQRgkSykV1mIIRUy4ECKvEsMnbZ2L/Vx9nGLAoMW9vCh07C12hkrJxk+eT0Rc091HZLGKeJIQO6WbhSIdlnq7Fjad4cJXTBDHN5CyomcAiveXfMF9qREsu5s8voi26LdGtoYjNDP1LWc6khYzIUGBWCcKI18UdBu6KkcCtyQ2AtjngE1sx+GkllJyOITmtVnpTYzU8bKzlshPU5O48ljNkYgsZl2RbAQKrHtBMQx50zIr/gdn85xpx3XZtG1UUGkvLunZ4gG45ZkRAoGdZtqqm95ZQUk+do8phqQLkUSAWVDXirGRPxy0hBUUhi6AIXMMVVlXjFbb0Gzy2s6xiGj9gdqUm4w49tLR42XwSOaWKCRXaBbELB0kN+orRBr4lwq9Y0gANj/AKOOOTf3uKf7uKHX2SBmTL9eMt/9WKtRrCPU2uj8UkyRTX/YyYRkYYucPcc0gSYxiUx2fW/zI2xxO5UTEqArR0fGXM0MJ1nLnK6pNgGrx0jc6YXzc/l/Nz+XjNIhggnkGlMbmscewhrxdiLrlL2UapqeY4Ee10uvTcdjxFWeY4GGtHSRJ0b2QmxFFUAsaGHjrxqqZXyQVJVaMFC140Y7YrGjCBUuoDNmGspBrAZ4gLr5PscdfUpTR6+xTCw+AypFyYTYTcZ/K2/+WN772AnFs0fdqGsmy0CdrxmeoLdUF0mxlcEviDuK392x7Zxx7P4DKqXdhNuF7A5EoksjthNIEyKXbFGTnSQESiybbZ320dMI9ZmRZOxD1iXCG1MXajODg4pTCJ9JH7OXGDydety55YQmhi3okqYyX+Af/8QAJBEAAgIBAwQCAwAAAAAAAAAAAAECERITICEDIjFBMDJAUJH/2gAIAQMBAT8B/PUJS5RpyGq4+PpPtFIn9n8cOooqjVQ3bvfHyNGKMUYjjR5XBiUqskq22y2WzJjdlvwZMtlvasbiVxRgkOKdDiknRGCaRSX8NNE9sYuRTo5lyxxr2YSZ3VRi/ZjId+9qmlQ52i+KH1LM0Zo1EZknb/Vf/8QAJREAAgIBAwMEAwAAAAAAAAAAAAECERIDEyEgIjEwMkFRQFCR/9oACAECAQE/Afz5akYumb0PsTtWvT10svJKPh2aftXp6mi5uzZZFYquuftYm0ZsykZilfA+HbM2XK6Iyb56aTKRimYoSoxV2YopMpLpeWMjLus3GxSavkjJykrJzabLb/puSo0/HTKcYlxujiLxSFPL4NyCO27M4/BnEVVx0y027r5Fp0yu6xaTRts239m0x6ZFYqv1X//EAEcQAAEDAgQDAwcHBwwDAAAAAAECAwQAEQUSEyEUMVEiQWEGFTJScYGRECMwNUKx8DNAc5KTwcMgJENQYnB0dYOh0eJTsuH/2gAIAQEABj8C/uH4QvcP2CvNlzV9aK/Yf9q83ecDbh9fU0v7VrWvX1or9h/2rgw9r9gKz5cv5r/oK/d8h/y/+J8h/Qo/NdNqU5DVpKOo1a/d1r6/m/qo/wCKzR58qUpETO6oBOpp59wnb303JjeUctxlY2ISj/ii27KcmK0knUdtf/b81/0Ffu+Q/wCX/wASnMSw1suR1m8qEnv/ALaPGkSYzgcZWwggj3/murGeWw5a2ZtVjX1nK/amtfj5Gtlyamob26V9Zyv2ppS1nMpRuSe/6bRlJK2Q0tZSk25Cm4KYUmC48cqHtfPZXdcWp+LHjrkOMqKV6Y2FqDMqOthw8kqHOnSnD5BDeyuxyozBCe4YC+pl2t1ouRYjjyAbZgNr1wnDu8Ve2jl7XwpK5UN1lCjYKI2pTL7amXU80LFiKRrNKazpzpzC109alYtOZXLbacDKI6FZbk95PSlKjQ3sPmJIs2HNRtY9p3Fa0eC8613KCefspxpDDinGwStATum3OuKegvNseupPKmcR0XrqUrOnJslHcquIMGTIiJ/8I9M9L07dgRjf8ikWyeH8u6hmToOXHXs1LxDCcJSzikQZgh15TlkeuPZUidiEqSY78jJw8c21F2vmN/bWCllxx1tMlxKdYdpI22psF1dkykIAvyTttU7UdUvMmQk3PMAGwqHAxFUiIqLm03mRmSbm+6afU9ibpYah8RxTN87jNrACsfREXJyaCVFmRY75h2risEmDmr+bTFdMm+b9WpEhOzV8rQ6IGwpb0YXiuHI4lxGZtZ6ViExEBGHTYYSoqY/JuAm3LuqIxMmzlzUNIUHGrZGNtgB31jbjZyrTBUsKHXSSb1jIW4pYcgOqVmN7msO+cVvJdB37rCkNOT5bDbDaAw21HBQlOUbg5hTD0dTjiwylDrrqMpWod/M91v5evHIDmUo3F9jSZMZeR1O24uDTzGkw9GdVnLDyLoCuo6UywvTQyysrbQ22EhNecyocXnDl7bXHhS5jagH15rkj1uf303GcjxZbTX5PiGQoo99GfqJLpTplJSMhR6uXpUhhpmNFYfTlWhhq16nI4xlx/EAhKGmV5siftE9OdvkW0ypDkdfpMPJzoPurhcrEWLfMWYzeRKj400h1mM+40nI2+6yFLSO6pM5S08RIb0lnL9nLl+4U8WSBqtKZVcfZPOlwNNh5hRKhqt5igkWummmHmY01DWzfFNZygdAaVIfIU4roLD+oYa40IPTC4bqbbusjOqn/ADjhytLR24lna9x1qTKhx2VJjqVZx82bbV3HxqNOlpYkZU6a5kZV8/TMKjul2M0y8gLC1ucr8hy51AaLTLj6jdorPza9qxeVijDCipakoQ04oBK6lws8dJi2LrqnOwm4uKTMLjMqKTbVYVcCsL0WW2c0a5yJtenGYpbC0IznUNtqXICmHVti62G13Wmm5cfR0VKy9pdiPGm8OIhcMmboiRmObNmPh/vScOdSFSFZcuQ7KvSoA0VOIQHHFhXYbB6mmUMmMrCGtlcG5mBX1X1+hgyIbui9qFObKDtqK60+zNk6zaWcwGmlO9x0FYpAgH+eJkqUtu9isZvx8KxRvFBpGQbMsKO9/wAfdWAGEyXw3HGZIVyulNq8kIT6w5Navqfq2/HsryobHpqSQBWLOToC5c6PYCDmt3XHL8bViR83LwvM6k6C1E/bRuL1hH+FFTbc+GP/ALCpkvEE8NFS0QtSlCyu+9Et3SlUs7DpmNN/4r99YT5QPrAXCaWHr9R+L++vKDOyJMp9epwxcyZ0WsE3rEUI8ll4fFeGm4tckmxOwNiPoRHL7hYHJrMcvwoqYecYUdrtqKa1mHnGnfXQqxoKlSHZChyLir2rCBhz0iM9FY0nFDs32T09lcSqQ4ZHPVznN8a4luS6iQf6ULOb40qSmY+JCti7qHMacS7LfcS4brSpwkKpOs849lFhnVe1SXZQcKXGS2NMX3uKEZcx9ccf0RcOWtDWc0L30s3Z+FaGs5oXvpZuz8KUyh9xDK/SbSshJ91BxlxTTieSkGxFASpb0hI5BxZP0JYiJHZF1LWbJSKxQzExZjZYORxPbAUL9eVGXqMxIl7a0leUGkIkhJQ4Ltutm6V00280h5GRfZWm45VjMV1iOHuLUGCm2oTm6dwArCHI+AM4kt5lOezNyOyPCoMRnAhhj6lKCQEZdTl4DlTykzILzrKSpxlD3aTSVBDPnRZCw8XVZcn48KiYi4W9CTsix3qBJVpqRN2aAVv76KRJhmSBcxw72q8oWGo8chDdpGv6SfS5fA1GlNqYDDwvmUv0R40ZKnY8ONmypdkLyhfsoMykjtC6FoN0qHh9DjsJhYbmut/Nm/gR+PbWMKmsmOlbNkpKhuResMLWFeeEsdlbCHigoV3nbn/9qBAdwVWFtpOdnM/qbd45eNM/o1/dU39Mv76wbzIUhWgnVzZfVFvSrCXJaW3JQK+HT2Lcu1e3hUzzjgTmDyQgqMsK7N/b30qPEb1nuI9BPtrBUwmTIW2o5kp5jmK8lMNmnS7em5Y+HK9NtM4C4y20SRPDit+zzPWvLz3/AMSsBAJsVbj41g7rWD+em2m8hbQ8UFs2AOw58qw6E9hBwwNDM1me1Ozyty+hS6y4ppxPJaDYilLXOkKWoZSdU7jpRVFkuxyeemoi9akh5x9frOKua1GXVsr9ZCrGipRuo7kmglM+SlI2ADytqQp2U86UbpK3CcvsrRenSHWvUW4SKUmLKejpV6QbWRelNsTH2W1blKHCAaQhx9xxCPRSpZIT7KQFYhJVk9H507U9aQ6Nb8pZZ7ft60hlbzimkeigq2Huo8LKdj356ayL0XH3VvOH7Tirn+4L/8QAKxABAAICAQMCBQQDAQAAAAAAAREhADFRQWGBcZEQMKHB8CBAsdFw4fFQ/9oACAEBAAE/If8AA8rorelFRJzn/CYHVV+anmZz/hMOEklutNRLx+1/N7/B9D+D8R3/AGukMyUJpRPhXiLcS3AFGHT1ybDr209L2yisRCN1QP2v5vf4PoePr5ndDoep1z6aBRjw9v2t7PSkXEmfm/3z74Rc2nU5+b/fEYqbZc/OuLwjWcvIlfvC3UCpyw0dCJLemsIBcwcO3ONnFtCjZHV9MYsmZ/8AQ75P6o8Yl24j60G/1Z1EhJOJNObdNxQmzNbL3y0OzjPrxkUw7NNdcGOk31hbQwm4cJ5N+MTgTCLYnSMro4qQD1ePOMqfFcIFHhnLElYhi6VrukpxiZNopHoN+/66OZ5YhKpxlrldKRYF4RWFikQUMi0rsxj8SRe6sJPH0xfKU2Egg4ZcIAicx4WEFY+zosaY7pHqZObJaQAC0uodRgUlRWEQ6njy4iC+50rHuX2wB0sLRVfY+uaJtCQmXeH1yYUXEoTmxBXxQEL1wI0ma9YF/vl4L6tSEELO3HS9cW9H0ydpmJAWqdzG/TDgRInxMNnJ+tilTokEORrg6ASER2YXvQ/sG10pwXGSyMUB0rDUKq+lH0ZWmjKUSnlkqnIECygIYlW5zo6vakcVemRNgNN5mbenORmENcDT2ij4O8OT18y+2dPYj6Q9TiZmgRdJaY6SOLwJjoUFXoY/tuJP+llMxDSQToxh9blHywjszkIshjICAAoAA/8ABTDwziHsJiIxjFP7TobicMiPvooCxuPTNDNGL3gIekm/bHCWMCAUOpPTjEb9U7g3EielMZFbRJe2oks37ZAG0WBuIl9sFHZy50mjCUgo+adsby48KQyCoG7zp+sJEpqJ7Ti5yd6DtVrC7n2BEl4T7Ix3Vi50sMc14wQa4+wiY2xox7ZktMbkFT4O3yYfh1wpaCZOr+qoUyHLgH05hEP1D+GVKJEhQTHqTHqwjXJQqQhezeQDilMpXbumEhLLLdx9zJoxw5CGRXM9/LBOqGLR1IPGfgOcCFQonFHLcZZNDYAs98kVb5Fkj+MUOU/35zprMe30vxYbKu66w6CI8nOR+JhQNmUuztfyVUXKRWZrTa4IcpPE4kzcy7vdsyuqCfinCn4QXQUqy+Xoe2z9WNpASIp3O2BNeFAcLOHWYiioUm9HtjKYs+LgnWRbXlUkuU4wywAKQNVOSGo2t+ejJDUbW/PRks+PIDKHLdkK+gTLqsCp4fkzYPk4T9sKO1FsgpK1kf3hmPtlcrEd2fJj6iybxHJ1uI2CaSBub1iMQkSRZUe5d5vU4OrTNUJ85VJU9BLIhh77EgXEamMNRPA6d7I7YjyJtxiLAG+cscyIfWoyz2apX0BngesY4Zxcd6n8TkuspmBjo5MD/wDJQl8mBM6kF+yXCJbsiSTA9998qYgdYRALT92Ida0yElsjTbx8APwXPAvDDP8AeayUz+IZGPD3eMK4W8XUwg5aam8XBdkJorv1x3wjDyXfOJWvTCRy6YkfBkkpkkDMbmfbPxe2R6nwNPfheQg/dAOy9POO32cqfgaNvHydpPh8wyaJFy8i9ZR4dedRlfZiRF5w8IkDveMSAyQlXnAvWBgDQE40q5RrmTWsarFKZ6k5rsiT6ox9wqoOrTn0Sk0B1gAq0vbXj6f6K6+fJ3zm4g3vp6GIP+7pRm3OjPef8Bf/2gAMAwEAAgADAAAAEP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD573//AP8A/wD/AP8A/wD/APcvP/8A/wD/AP8A/wD/AP8AeRz/AP8A/wD/AP8An0nZVO+OQf8A/wDsMc8f/wD3zPP/AP8A/qbk7nWR5V//AP8A/qqSPsbGL7//AP8A464Na+JvVf8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/8QAKBEBAAICAAQFBAMAAAAAAAAAAQARITEgQVFhMIGRocFAcbHwUOHx/9oACAEDAQE/EPrzKIPoiJXhsYFxrSs+Uy8MvYm3EuurjIkYCF+2MSpz294bb6/EDke/tCF+kKo2rp8yuu9QtdnzBKXrgFGyBaYttgWmdyYRyJiyxLOcA0xYpeEZW6PtA9pLvlLGBKrMwI5v7qdZgfmMCOb8oAo7oWmd6+1Qglfv44VhNdYnZMRAur+iOerzhaxHyHzC8MJdWJQ1twkWMkwpuq5f7G574XVy54i7rkjqYdZoPSNmDr7lQItmKD0mW/iv/8QAJxEBAAIBBAEDAwUAAAAAAAAAAQARITFBUaFhIHHBMJHRQFCB8PH/2gAIAQIBAT8Q/X25zENejALQfpozpjzBrQV5mFXH06nalaZKqpSjb1pEOIo1exTnP+eZaY89Tarju/vFYTJjuM+0tlKvZ6SVW1sp1+Y1MNfiMlMPvj0IJTHWECwEdQTwy8u7NkzAdo6wgyw9LxKq331itixqt6lLKN3jirmVbCj3/mcAFOiDghVY5i+3wjco0197qNUPPj4X0ko68QapLg5Q07YStw5s2iEbhvcvxFBatRG8katp9KVhVOpnVsu9/wA1Cq5lTid9s5gJh3E1rELeAr5zCht2Odm94qFORX7+0rP67/av/8QAKBABAQADAQACAQMEAgMAAAAAAREAITFBUWEQMHHwQIGRoSBwUMHR/9oACAEBAAE/EP8AofkPBluPsvV8/CTQaOna/wAoPJ7+EkRbVL/U3q+/0vT8L/FfP+ntRc1R6kwG/F1+AFag+DsB5UKwDzODbFPiDQNFbEwadqKWswCa1d/0vT8L/FfPP/iWRtAbHRPnNVZYvQg7BEVsRP6X0CBhy0DGGvr8Pg1ur/5O70nL+HyVeJqWqfVd/rCX2jeCDs2ZEkTXMKhQMbvzomfEVpVYBVKlwb9FSZgvguqLvKN1gxUFEDoFMUa6Ah0ep3QQjvJBXSPqoHDRXZlJL9iyzTxvnN8wk6Ke/GiJ8MceMAPugU2UR/ZMeLRR1bvdgx4zKi8SvIiIQelPTGbsBy8gBslHR7QKprCn3h/uxzj0fh3R7vMi8UIAAPSqbAbMSTAe6/QNbda7gIkOXxGiFIEgxOCeLQ41soSRpVt/5qoylyWhymr5hbhFMjXTLVojWhl4+MQTZINNlf2xOn3A0agNhgRNcGliRjOGAUDtV241CjtBg65XBCYa4h++iTgbVDfwWetYsQoiWJ8msXnkouioRxEpT6OBT+Kn+U5X0mQDSFAAjzUp8rJ6D1UAKSaaSH4w3/IZya1pUlVm0oL7bDRIQmS1+boP1JlRoHw/7sOqi83lmFYu9uGCQs6qT3sfHMu6DRsWydUnY3jTrX3K0UKek/5p6wFozj7F35gagJBG08g8fp6GQsYGRoMgDwag2GHyoMfQJ4dqqqqrjl4Ql3HiaazYOqh1VaKQ+MFFAZAMiKAhXFVR5oV45Ag8tu8FLsxgSmqiJYBYFaf28+Tep7pG/M1nBZrMNuLo2iwthgBMA5HiKpCCygyhOcYIhrqfmhmnD/rEOBgpu7xm1icoAXixvzGEG27ZLu9RjsjnrQ3vBQR8QHAmsHSLB3n4AAHD/wACmidViVzAHZAMf7xavL4/oblxJCa00UCGgkNlNZF9CjgMABZpoMYwEcdA3AIchNt8qDA4AVJ2B7QKSK6Jjibhf1KrXBwC+zBBCwykiNTVURkdtmzQpKUumUosw0ubjK+3eKWPMRKqKOtfvilRtpKAVJuKZq6qJi5otC6hniuzWRw+lV5QXT1ImsolmqyDYKUqhFZ4r8imRQEgKm+DLmviQBeCgHpCafoxDJeW7qIblzkXjwip3QRZvCwXHYJVCRFYr9ZpADlsgFi/JA13L6TvYqKmuOewwiAgT6l9CwfactmqQLfk+9n3l0mqvz4hC6VDBKfbRXGCd16Kac/kvhh9CKMjob5h2kApIFNgv09cEecGUUYdNafRiMEEiMRxbc6is0+K5YWP2SsR7g7+G6GCpeMRCWgHAWXj9GyQlVSqw0UOq+5szR4UaUUoM+jKErZWraYW+3uE7VR4elGX6xEFV6SBlt0nms9xJIIlLhmu8xz3L7wwq+1wA+RUYBskIQdEMPCBMKkoRrU1HwZdWJb+8sfRrAOBBMoiAj3/AKwdRitwXEIQ4QxYWkKK712q7lxYWkKK712q7lywrFoQGQoANOBiTGrm+UCY/wAGjL5ES/f6K7QKgGCQtXQBXeoKSyAJspCGqz++suxKI1iaqg6rC0FRBOK4ZZWY02CDseI44K4XRoopT9sZq0i2JGlAkVJ223+Lg26vdFR7lXsi7CoGLTsBOvTqjBvlCED1MNRAhChfy8+3vuI2KuIE2Ad8XFWXHOQ2jBaPlyv9sNPgJOzazffcHp1IaaEDO4AEPcgA8KikeakCm/CoD9X9q+ylAWXy7z6CBw7ROPRBKaiL+hqHRB5EegMXyHIIS5Aa7QArvF3m82QN1MUpksAouMkDyOqA3NKBxJP5v5/i/wDWxRPLj5/93mdrH5KJMUlWr6wM1rfWbzoqooqo4fnuanrAaA/tvAsBHhUYjmqdP84AIptnVhSnspXVzbDFIvNtcqsNtwAE1grcRAiIj2O943VPZUXGgdXRKNxb0AZlWhQuiIFBr9FIGVopGIJrWeyNEp2dbOubcCMQvQc2Fle4tc9H3wFKH1ikrAuJEFGP747naZZql2q7rgmFuNQCQAADmKBKvBKiK02Th8YLbgSZ4kP982TFVWShFZ7iYcmY6AbfXrim6VQHqhP7Jivjju4lXDFL8LloI2lW2v8Ak3Xy4ot6t+9s+jwO45imTY5CB/vhtqBDhwos+v8AoL//2Q==" alt="Hôpital privé de l'Estuaire — Ramsay Santé">
+        <div class="ref-name">Hôpital privé de l'Estuaire</div>
+        <div class="ref-loc">Service de cardiologie — Le Havre · 12 cardiologues</div>
+        <div class="ref-tel"><a href="tel:0276899715">02 76 89 97 15</a></div>
+      </div>
+      <div class="ref-card">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMVFhUWFh4bFxgYGB8dHRoZIBsYGxoXGh8dHiggHhonIB0dITIhJSkrLi8uGSAzODMtNygtLisBCgoKDg0OGxAQGy8lHyYyLS0wLS0tLi0tLS0tLy0tLS0tLS0tLS0tLS0uLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIARgAtAMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAABAUGBwEDCAL/xABTEAABAgQCBgQGDAsHAwUBAAABAgMABAUREiEGBzFBUWETInGBFDJSkaGxFSMkQmJyc4KSssHRFyUzNDVUk6Kz0uFDRFNjdMLwVYOjFmTD0+JF/8QAGQEAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QALxEAAgECBQIEBQUBAQAAAAAAAAECAxESITFBUTLwEyJhcQSBkbHRMzShweEjFP/aAAwDAQACEQMRAD8Am+sGvvpflpCUdDT0wq6nLA4UZ2tcHMkHzGEZ0FqV7+y797W2q9V7Qj02QfZ6nncUgA9hXf1jzxaUO3ZKxFLE3crdOgdSBP43fz29ZX82XdGs6u6gRY1eY+m5/NFmQQMbG8KJW6NW83vq813LX/PGpOrGZt+lZi97+Mu2K97+Pt334xZsEbGzeFEgreg04EgCsTeXIH0k3jwvQObP/wDYnNluHqVE9gjYmHw4ldPau5skH2XmzxupQy7l7Y0O6sJg5eykyU3vYqVtve9sdrwrn9YL6nHEyMg5MtsqKVuA2BI2hAAz9J5RItDtKmp9npEdVaTZxsm5QftHO0NeSEUabdiEzGqiYUoqNRdUdmJWIqtuBOKPA1SP4cPsguxNyOtY87YtsWxEN1i6QPMBiWlCBMzLgQgnPCnYVenbusYynJ5GlSgldoiydUD2+ePcFffHpjVI+i5RPrQSLHDiFxvBsrZyiKTtacaefcan33HZdaEIxkWfOLC5ZIPi3uRt6u/OL/lVlSEqO0pBPaRnBlKS3EhCnLYqoao37W8PVbh1rfWjarVhO3umpu3w2BxOXt5PjeLyi1YIXxJFPBgVb+DeoAZVV6/yjtuXvox+DmpZfjZ3n7Y76OtFpwRsbN4Me2VZ+D2qi+GrOWPFx3+aNqNCqym1qsrLiVn13vFnQRsbN4Me2Vsmg1//AKi39BH/ANcapmR0gYSp3wxp0IBJSUIAIAudiAfSIs6ENdcwyz54NL+qY2ILprl/UadAdJvD5QPqSELCihYByxCxuORBBtuvBDDqPbHsco28Z9ZPmQPsggSVmGm24psQacAeztOt41s8911W+2LRisNPUgVqmqG03Bz3A5esxZ8GWiBDWXuEEEEIUCK50o1kKRMKlZFkPuIvjUTkCnNSUj31s7/bFiq2ZbYoShSh8GmChGGoSMyXj5S28kuIO8pFjlzHGHgluSqyaskT7QbT5c04hmZaS0p1GNhQNw4BfEBwIts5GJ6ReOea3UgzgU1kOlRNyhzsnFm60eQUAbcyIm8hKVacSJgVJth1aQ4iWSnJLZ8QqN7gHmFdsGUNxIVHpqxJXdH/AAV5qWUspZccUqRmdipaZV1i2ojxkLPHP02ZJipOy7oqLaAh9tzoZ9kZJUry7cF7b8bHeYlDM+9UZebpk4gInmEY0KGQUUkFDg4WVhBtkQvLaQI45PNuOSz7pwtVBgy838F1HVS4fhXwm+7OGXqLLlFzUmoImGW32zdDiQpPfuPMbO6Kw06n8FWLl85WRW4jktQKEnzrB7oV6qp5co8/Spg2WhZWyTsUk5qCeR8cfGVwht07l+kqE5hztLMNngMbyRY+aFStIeUnKF9yHaAUQvVJplY/JrKlj4mZHnjpKKW0GmmWa5OdKtKCXXktkmwxdKcr7L2iY6VadFDglJBAmJtWWWaG+JUdhIG64A2k7ial2xaGGEPmOelmmcvJWQq7jyvEZRmondfgIgWkGk8+oHp5lEkVDqSzKekfIz8Yi+HZyMRmdqJl1qZllGYnnVWemvGOInNpjvyK/Nbd5pcm+4sykkFKmHB7qfVkRxaBOaGknaras8gBDKCQsqrbsWTqg0mem2HG31Fa2SAFHaUkZYjvI4xYMRfQDRBNOZUgr6Rxw4lqtYbLBKRtsOe3lEoiUrXyOimmorFqEEEEKOEIa6Pcz/yK/qmF0JKwm7DwG0tLH7pjAZA9Rrp9j1i3izCx+42ftjMatR8xaRdSfezKh/42j9sYh59TJ0uhCfWGm9ap2/Z1Tu623/nCLUip9P0Y65II2dVJvx66zb0emLYjS0RqesvcIIIIQqEVbpggSVYYmzkzNJ6J7LK9gkk9oKT80xaUQzW3Sw/TXTbrM2cSeGHxvOkkd8NB5k6i8uWxUE9SyZ5unG2FMzgSobQ24sHLkASYlkhOrW65MMnCZuoNsMlOXudnOw4JKEjzmGLSGdLaqdUAApa2Bi3AuIBRu7j3Q96NNBtVNa2Kak35lXau+BXbhEWehzQyk0LaLWEeyNVqLih0cu10SfhXUAlI+EejA+dEGnUFVMlyoi65tzsFxmey5hpQ8+4w6AT0KFh5wZWxq6iSTtJN7Adp4w86ZN9FLyMtsUlgurHwnDcHzCDhsxHO6ferHucnm1KEnU1KZm5YBLU42ScrBScdsyLEG/M7DDnRaWGOkmZuosOslSXVYFYnHi3m2jM3AxWOHjDJVy/NvTb7Mu0qXmMID8wgJKQhAF2lKIwnnY7BENqEgWiAVNquPeLCx322RlG4ZTw527/smtEpb7iHJxyTanGppa1raCh0qLrUcYzyzvl2R5mp7o0KaQ2mmy5HtueKYdT5A3j0D1Ql0ekKZNpSyXH5SZIsFKWFtLV5gRfhlt2mFlHDNJmHUVCVS66EFcu6bqSSB1EpSeqLkePa4MB6hTyXHJH5l0y7ocbYLJW37nTfrpByDihtxqBNu3KL01eaNiSlEpI9tc67qt5Ufe34DZ5zvis6TSOlnaa6+ekfmiuYeUTuB9rSBsAGXmA3RecJUlsVows2wgggiR0hBBBGMEaJ8e1OfEV6jG+PK0ggg7CM4xiodVFPQ5LPlSikiaULXtl0bX3wRGtGagtpLyUNrUOnWbpPJIt25QRdxdzjjOKVrEx1hdWtU5QAucrn439fTFqRWGn4/HVNKjdOdhbYcW31eaLPictEdENZBBBBCFAiP6wHQmnTZJ/sVDvIsBEgiq9eNfCWkSST1lkLcHBAPVB4EqF/mmGgrsnVkowbIbpUzho9NJtc9Ke42Ihx0grqZSemE4SVIkW5dvLIHo0nPl1oaNMXLy1OlQOumXBUNllOHIHnGNOUiYrLyAclvttk88LbavMQYulfX1OSTtp6fYdJGhdSnU8XxTS/Cpgjc2AQhPzUBZtxPOPGl0wHETs1a6XZlEuxlcFDXjYeRz2cYkLsytE3VJpA67SG5KXHFxZSgW7CEm3AmEFTSiWeaYFlNUtjpnN4VMKHVvzxEHuhb5juOVu+PyInaW9MupbmMK5nAFlCjhYkmbXBcAyx295uyvyaJql0lAKBOzDjgB67bILd+w2UU9hh1n5VeGXpxdDb86PCJtxVzjcXiLLCjtsLZg5XUDvMeJGjNNqafxLlS4S2h5KriXm2yUqSu+1tf/LgwbiuN9iBKAuQCCL5HcRxidOFyalVSEwCZyVSXJYnMutBOJbQPvjhupPHDyMeNN6LOuKS65IpC7HpHpbrIevmF4ReyuJ33hvdnHyzLWYmEzUqqzbobNuiHWQFZeMk5bLEbYZu9iajhbTHegVgJakJzdIuFl+3+E4boXxIByi+W1hQBBuCLg8o5yYm3ETLjjck8GX0YX2AhWE4vHwZZAK6yb7NkTLQvTeYlpcS70jNuhs2aUls36P3qVXtmNlxutE5xvodFKolky3YIgZ1moTm5Izrad6lNZDmbGHyg6aSU2cLLwxeSrqq8x2xJxaLqcXuSCCCCAOEeXFWBPAR6jRPn2pfxFeoxjFGaGSjjjb6kJBHhC75nbhQdw5wQ8aqUJMs+S+W/dKsgbX6jWf/ADhBFm8zkjC6HHThRNdpwuCAMhwuVXPfYeaLRirtNVD2epwzyT3Zleznl6otGEloi9PWXuEEEEIUEFdqrcqw4+4eq2m9t5O5I5k5RzjpKhxxKJ2YXd2bUtaUcGk9UK5JJ6qRwQTFk6ezJqFQZpjZ9qbOOYUDsAzN+wZdqhEQmujnZx+aUMMjKJSlIGzo0dVplA4rNzb4Ri1NWzOSu8eXfaEdKbW5OomZrxGWxMuAZWbbALaLHy1BCQnfihFSkOqm5WZd/vE1ivxV0iSs9l1RPaNQHJlYadGHpVJmJ47kti5l5UHszPDbwhsqMoBLUVxIsFPkpSfJW6Fp9AENiJunl/JL6S6ywzU5l9KVBifcdTfy0tthFr++ubDmqINUQltqXbmlhLk694TNk7mQbpbsM8xewESLTSbQwUS8zdDT0+4+7vKmUZpFhuUq1vixEqnLrm1uVCaCkNuHDLNDx3TsbQgeSMiTsve0CK3KTeyGWuVxUxOqmrWu4koHBKbBCfMBE301IEpPjcqbZWkeSpbQKgPSe+IXUKQGZpmWBxODAHrZgOqVdSE/FBSk8wYlFbkXZyqPU9rJsvha1cEpbbQVHsAy5mGdsiMb2d9WOlOlFMS8uiUnpvwpbLbi5ZtIeSlSkpPWBsGk5++UOQMKlNV7oyqYm5WURvU6tCSOd0pKb/OhTN1dMqfY2jto6RIJeeV4rdvGWtW9Xbs9EQ9AQ+9ZLL9VmL2W4tRS0OSeA7bCE1LuyyHhVUDRs7pGpR3hllSx3KTiEaXaxKKGFVfnSPkVj/ZDqmSmGU50inoHw3h61CIzMacspUU+xUmCDY53zHMJ2QUr6f0CTw6v7ihfsWsFK63OFJ2gtuWPnbhg0gkaa0jHJTrzzoUMKS0UgcVYilPda/2xIqVWRM5tsUqWttDqcSu0DLKPcnTHqhUEMFbC5eXIW4qXaDbQO0p+Es7Nu4wU7CNKSyt38y5qWslloq2ltJPbhEKowkWFhsEZjnO4IT1H8k58RXqMKISVZVmHSMyG1fVMYDKt1RIvKv8AtPSe6lZ3At7W1ln/AMzghdqRzknid80r+EzBFJakqavFGzTpQ9mqZx61/PlFlxUuk4vpLKA+Qj/5YtqBLRDU9Ze4RqmXghClnYlJPmF42xHdYU30VNm1bPaVJHarqj0mFWbHbsrlS0+eU3T56om4dnHOib4hJJK7HsJT3CH2jUtCHZaQUPa5Rrwud2daYUkFKFcQgEW5FPCEopnXocmfFPtyxxUOufQLQ4SSSpitvE9dyaW0TvCEnCLHkDbuEVff2OWK7/kfJ2fMrR5ibVk9MJUvZYhbvVbB5pSU9yYaKlKJLtHk8rS7KX3jfxEoQMzyJv5o162Zla/AqewgurJCy2M8WEWSDwG0knK2cMelE8toOSyFeEVCbPupTQxBCRsl27bhsPZnGigyla64Ns9NszUyuqTgJlkq6OUlxmqYUm9gB5F8ydhJtuIPqtVhUqrwybCTPrTaVlxmiUbtYLUPL/5lHrRXQmfaHhD7rcshtshKnLLWyi9ypAvgQrnnt2QppdBlnFqn1oV4HLgrDrpuuacHv1X95cWA3wboCUmuH3mMOitGwTjTz6jiZaM3Mk+8B6zSFfDOSjyWOBh50eqhlqdPVQ/lpp1SW9+HMgDuuT3CPc5JuOS/QrVgfn8c5NqIzal0ZtNkbRuFuOMQrZpgMvRJU5dI70riTvwpLmY52t3xm76mjG2nbGdVBcR4LSWyUvTKQ/PL98ASbNk8EgG/E574U17SNbaV0+kIwtS7alPPJ8ayASs4t3NW0nIcyt1BSHqvPJviSpMoyTtCrJQsp5jCTbnHun0VLLbdPuEF5rwipPE+LLpz6K+4HZ2EnjG9wW2RFaZSVLmpETKy6iaAWUqKvFusEHPle/ODSDRAt1HwRlYKXRiYUo5FJBKU3G+4KbxJkLMw8qdS3hC0GWprNrFQsU9LbchIJJVuvbOM6Ny6Haq0EqCmKbKhKnNxLaSnFfZ46iRyQYOJi+GmrepVqk7iLEbQdoPCOh9UtQZdpzYbQhCm+o6lIt1x788SoWVfiSN0c/TrwW44sbFLUodhUSPXFkaj3ltzS0EEIfZxJ4KwLKcQ7DjTBqK8RPh5Yali7IIII5j0QhHWVWl3jwaX9UwshFWz7ne+SX9UxgPQrzUeCZF43/vSv4TMZjOo1PuF3/Uq/hswQ8+pk6XQjRpMi2kkmeLaf/mEWrFY6XNH/wBQU9R2FFgeYK7j0jzxZ0aWxqesvcIhut5BNKmLbsB7g4gn0RMoSVaQS+y4ysXS4gpPYRaFTs7jyV00V7Uhafojo8Xoim+6/RGEEkXnTU5eX6MSjkwtxc4snCgKAKwgDxlA3AN7C0IZWWdmizS5hKm/ACtT74NvagOrhI2FQ38L8IU6U1b8Vycq2gMidX1Ep97L4xgJO9SklBPHEqK22IX1ffBHqvUHcB8B6UofcDK5pw+3TK9mBBOaGtgwpttz2mJuppNNRL02SCfDZi3SPWBKR790322zCUnLLtgrNOSiqUiTSkBtpKnABsxJSohXbiSDHjRVfTV6fcc2spwI5JBCf695jN5ASs/4/JnSRK5+eZpKXFKYYSHJtd+svDayVEZE5jLiq9uqIcJoIqEwZZICZCSI6W3iuOJzS1w6NFrnjs4wx6Iz5Zk6tUlflVOrSCd+EWQPprt3QopvtGja1oJxuNKUpW8qUqyiTAGT3+fyGqanFPy03N2PSVCaTJscpdJsQnhcBd+YEPVQUg1qVQD1JCVWtw8gnDbtzBhtooHSUKW96llUwbbCpQJSe0HF54QS00roa3OXGNa+hSeWLCbdqT6IPf8AQt+/bM9SyunlZAKACp2puPqG6wUu484Ah9mqc2/7KvTC1JabmEh0J2rYl2+k6EHddStozytDFTxhc0eRb3il7LeOoGFE0+VUqsm/989GJgEd4uIz175Mnln3kJ1vzLpShpv3dNtC2HJEnKHxGkZWSSMydtu4QkqWFllVKkVA+/n5o5JNtqL7mxs7rZ3VeW6YLTIyylSxIfqDqEpWdqUlKUgC2wBIy7YYWNHUzEx7Fy5wS0tZc47frvO8DxzuBuFidwjJmktt++2QaXpIEo5MrBIUsNS4FxjXfrKA2kAZW4mLZ0EpgbnUtAX8DkENOEbA+6tTq089vpiK1KcQ8900s2DKyBS1KoGx2ZUbIPPPrX5DjFqaG0LwSXCVnE84ouPr8p1Waj2DYOQjTlkajTSeQ+wQQRE6ghDXfzZ/5Ff1TC6G/SBQEq+Ts6Ff1TGAyE6i2/xes5ZzCj+40PsgjZqOT+LjzfX9VAghp9TEo9CE2m+VbphF79bPv/554suKx0yXir1ORn1U385V/LFnRpaI0NZe4RhSrAnhGY8Pjqq7D6oUoVBLzJXT5+YCvbJ2c6EL3hBWG0i/DD64btZck6uqIal0i7EqhTaRuSjErIcfuEFMSr2BmABZyVmsZ+MlYPrMPukk4hur06eSbtTTITfdY7+8OJ80X0f1OR+aOfoeZuuIcm6RUh+TXiYc+CtQKetwsVX7BCiSk+g0hfSRZM0yVo53ACh24go98NFSolpioUtIyeT4VKDg6nMoTzULjlYw7TlZS/ISVV/tpVxIdtwJCHQeVuvbsgDLXP3/AKY0UGVU7RapLp8dt9SsO/CktrsO3AoDnDhQn/CdHHm05qaQpNhyOIX7o2Sb4kK2tKj7mqKQUndiN8P7xUn/ALgMJNHJbwGrTFPVcS82lXRjdmCRbhYYk/NEZ/6BKz/j8DdR54ByizB2GXdl+xTalIv+8DCOm/oGcUblSpoYu3q7eX3wkbk1mmzbIFnZCcDvwg2oFtYHIFOI9kK9HlXoM+MyUvJJ7Pa84Ynd3t6MXvTaUP0BxRwoTLIuTusACYSUidLlPrTQ2Y+mBG8FefdZA88ItKGsdIpb1j1OlaJ3eMbfU9cbtE6U4w+mWcIAqUi4hO3qFaFFGIG3WBTa3wo1sjYnit3mhx0yqIfVRTfJSUFXbjaSfUYW6uUFFYqDKjcltzvIcT/NFZqq7hEvjsRLgYBsyCsZB74nFSrAkK6Zix6NeEr5ocQkqI7Dn82M45WBGabxeq+xii09UxRpmXT1XZN8rNtqrbeYtY58osnVhpEZyRQparutHo3DvJHirPxk2PbeInogtDNbnGBZTUyjGm+xQIC+8HErzRr1O3Znp+VB6qb/ALjhQPQqFlmn9SsHZr6fQt2CCCInUENWlZtJzHySvUYdYYtOXQmnzSjuaVBWoJaMYtSzOGloPluOH94p/wBsYjfqeTalMfGc/irggy6mLT6EMmkoJ0jkh5LIPpeiz4rafF9JWuUr9rkWTGlsCms37hBBBClCq6RJpZqM/TXD7XOoU42TxUDfvzJ+ZEdZxO01+nujDNU5Zca4lKSSoDjYE23WKTuida06K4pDc9LZTEocWQvdG0jmBvG8XiKaXy4npZFYkiUOhGGZQk5iwsrtKdmY6yCDuAi0Xc5Zq113b/BTpLUjhpFWGWEpS6RuSfGHaU4xDs9S0tzk3I7GKiyp1rgHf7RI7bhXzuUNWisimfoDksjN1pSikfDBK0DsUDhvz5Rreq5epMrOIuX6e6kOC3WsOooHeLo9N+Eb0Cnv8/yIHVGcpTku5lO0s4gN6m05KPPqjPmlPGFemcwuZkJKqtZusEBzkQRcm27EM+RhbrCkHEKarMjYhTftwAuChSfHUNhQR1VfNPEhp1R1Np1D9Mf8R4EtgnfbrJF9+xQ7OUHa4j6sD37Qro8017L4hnL1SXxWOfWWCFJPwg4lQI3Yo0aFUxTT9RpLpsXWj0ZO+1wFd4KT80xEtIabM02aQ0tSiGV9Iwr3qkkgkp4E2FxxidaazwSuQrbAuMg6ANoIN0577FSR3Rmv5BF632/vUjVIJeo85KKFnJVwPBJ2gXs4LciD3qhfpbNlKKPPjYlCL23FCkrI7xcR605V4FPIqEsAtidaKre9UVJAWNmWIFK+NyqNMux4Ro6q3jSb5V80nMdmFd/mwfUHMd0vsMs9Q0F+pDcyFuN4TlhKsSe7CoRs05V0jVNeGeOTSg81NqKVeuM6BEvPzCFnJyTcB+alOH1RmdVem0pXkPvpPe6hQ7rCDuJZOLa3/IatHVmqyoWVEpxJ620AIX1c9gHCJnqkV0tQqMwBkpRt89xarfuxEK1OpkatNuJTcjH0VssK3EghfYApXfaLR1RURUvIJWsWcmFF03GYSQAgH5oxfPMLN5XKUV5sPDf4JtBBBEDtCI7rD/Rs38kfsiRQx6cJvITIsD7Urbs2QVqLPpY1aol3pUvyLg/8q4IxqhFqVL9rn8VcEGXUwU+hewySJKtJnzuQwB520H7Ys2Kz0NGOvVJzyer5sKP9sWZGmClo/dhBBBClDBEVHpVTnKNMiclbmUeVZ9nakE7RySc7Hcct4i3YS1OQQ+0tlwYkLSUqHI/bDRdhJxxL1KbZmfYx9NQkj0tPmFAOpG1B8hXBSbnDfs3xIarLstveFtkKkKkjo37bEOKyQ7bdc5Hn3xW8wJimzT0rbpG1HCtlYJQ82fFNhmFWzCk2IIy4GRaqas24HqY/mzMJV0YJvZVs03yzIz7RFXHK5ywmr4e7/wCj5oFX/A3XKTPEWSSGVq8UpOxBv70g3G7O3CGfT/QNySc8MksQaSrEQnxmTxHFHq7I36VUBc1LLSoEz1Pshzi/L7UOjibZ34pWOEbtWWsPJMnOruk9Vp1WeWzo1k7twJ7DujZ9S+YXZ+SXyZI6XMy1ekMDtg+gda3jNuWycR8E/wBDshg0Skzhm6FNWxWUtlVsjvxDvsr6Q3Q26cUtdHnm5yT6rTpNk+9Ctq2j8BQzHfbYIcdLKmJliWrUmLOyywHUbwN6VW97nhvwXAtxoG+eeq19UNNLbXNUuZp7g90yKyttJ22SSFoHYcQ7FDhHnVO50jVRlNvSypKU334VIP1k58hDhpDOJl6jJ1ZoWYnEJLgyyJSAsK3A4SknmlUY0RkhKaQqa964lzAeKVJ6Ud1kmDfJ/UW1pL6fLYjGrAnwtRH6s9fswZwomDejyIyznnLcd4+31Q8auae2mbqYtYstvIRyTiWk+gCGzR1xMz7ESY63RuuuOgbgXSrPsQkn50FvMWKtFL3+6HWoaNmcr7jRF20lC3eGEIT1fnEW7LxdiRbIREdAJMqMzPLSQuaeJTcWPRJ6rfnAvbnEviU3fI6qUErvkIIIIQqEMOnhtTprMD2pWZh+iO6wj+LZr5I/ZBWos+ljbqe/RTHxnP4q4I2aowPYqXt/mX7elXeCDLqYKfQvYYNVyiajVCf8def/AHV5RZ8VrqpSfC6ob5eEqFufSOZxZUaeoKXSEEEEKUCCCCMYr3W3o4p1kTrAIflrKunaUA3JHEp8bsBiEqpgnZcVKSGCbZUDMNIsAVDMuoG6+2w25iL4in9JqcuizonpVN5Z04XGxsTfMp4AHangcuEVhLY56sFfFtv+Ryo+kBnkNz7CfdkqMMyyP7ZhWagnibjEn4SSnfDPpBQpNDyJxKAunznUdI2sOKOTg8mytoOzOE1dZ8CearFOOKXd8dO5JUes2seSo8digOUWnS5uWqMmSkJU08khaMsifGCh5V9/fGeWaBHzZPXvMgngTjjb1FnFY3Et9LIvH36RfDffiTYgjhcbLExvQxHQ4GnCfBqglcu4D/ZzAJSO/FYd44RMKhIurl1Mk3nqWoOMLO11nahXPGlJQfht3iGJmUzUpPlgEFl9E23fanF44HIKBVBWgskk0OlIklTNHm5FxN35B1RQN4IKiQO8LF+BjxR58F2izm8lUq5xxC7YUTzCwe6HvRmcQurdIkWRUZFLpA2BdsK09oKTfmTEUkWgyvwNRGJqsMFA+CokG3Lqp88E1rW+n00H/R9GCqVcCwHRuEjiSMWXeSe+Eeoik4n3pojJtAbSd2JWarcwkD6cK5V7BO1x3clojZvItE51cUPwSQZbULOKGNz46syD2CyfmwsnZP5DQjeS9LkmAgggiR0hBBBGMER3WH+jZv5I/ZEihh08aKqfNJG0tKgrUWfSxs1Rn8VS/wD3P4q4I86oF3pUvyLg/wDKuCDLqYKfQvYYdSyityfcVmpTwJPEkrJ9MWjFYakzfw5Q2F8f7zFnwZ9QtHoQQQQQhUIIIIxghPPyTbzamnUhSFiykneIUQRjFLzcm9RH1JWgv0yYOFQIxAA7QRsDgGy+ShzGSZouUl1M9JKL9Pf3XOQ8hd/FUNyj2HndU9JtvNqadSFoWLKSdhEVbNUp+irWpCTM050+3NkXLYO/stv88VUrnNKnh00+3+Eqbnm53oJ+RPSKbV0bqMgotKt0jSwogBSTZYvwyviziUjSUydccl1D2ieaWEjd1gVEd1lD5wjw3QlNH2SoboW2r8pL33bSix9RzG4w7T84mrSyX5YYJ6TWFhpWSgpJups7CUqtaNp7Beeuv39iH6KTS2J+Tk3QoOy0w63fcW3LGw32KhiB4LhdO0Ur0lSgbOlS+ojcEpx59qkgfOhdpF0cyuQq7Iw+2oamE70KxYQFc0qJT2FMSNEqv2Sqcw0jE8iVbQyL7VlKlYe8pRBb3FUNnz/B51Zy2NdQmCAUvTjgSTvSlRHm2RPIatF6QJSVZlxmUIAUeKtqj3m8OsSk7s6IKyCCCCAMEEEEYwQxac/o+ayv7UrKH2I/rAP4ums7e1GCtRZdLGvU9+imPjOfxVwR71RkexUvb/Mv29Ku8EGWrBT6ER/UcoETpve7yTfj42cWjFIaudL5aQXNNzClJ6R7qqCbjIqBvwifq1nUsD85H0T90NOLuToyWBZkwgiBHW5TPLc+h/WMHW7TfLd/Z/1hcEuCniQ5J9BED/C5TPLc/Z/1gGtum+W5+zP3xsEuDeJDknkEQL8LtN8t39n/AFgGtym+U7+z/rGwS4N4kOSexhSQRYi4iAHW/TuL30P6wDW/TuLv0P6xsEuDeJDk3T+gSmXjM0x/wZ0+M0oXZXyIGae644AQmNGnHXDNCXRKT7NrLSsKYmkm921gdYXttOYuM+G0a3Kdxd/Z/wBY2o1sU0+/cHa2YbzcCXp8m46MLcL1k9CzPMhTzdwVMzNh10Wukk77EZpvneJVKSKG7qAGNQSFq3qwgJBPdEWa1n01Qv0xHIoN/VGz8JVN/WB9FX3QrUhlKC3JdBESTrJpp/vIHalX3Rkax6b+sp+ir7oGF8DY48ksgiKHWNTP1pP0VfdAdY1M/Wk/RV90bCzY48krgiK/hGpn60n6KvujwNZFN/WR9FX3RsL4NjjyS2GLTq/sfNW/wlb7QgTrHpp/vKR2pV90NOlWsCnuSj7aHgtS2ykJCTmTs2iCou+gspxs8xbqd/RTHxnP4q4I86m1XpTPJbg/8ijGY0uphp9KGDU9ItLdn1qQFKS9hSVgEhJKz2XyF7RZyZJoG4bQDxCRf1RXep9ooeqSDtTM4T3KcEWXBnqLSXlRoXJNnMtoPakfdGFyTR2toPakfdCiK11uaarlgmVl1FLy04lrHvEXIAHwjY9gHOBFNuyGnJRV2TSdekmvypl0fGwCNMiae+SGhKuEZkJCDt2nIb45iecKiVLJJO1SjcntJj1KTKkKC21lKknJSTYjzRXwvU5P/Vn05HVaKUwNjDQsLCzadnDZGgaPSn6rL57fakfdES1YadmdBl3/AM4QnFi3OJBAJ5KFxcc4lelFbTJyzkwoXwDIcVHJI88SaadjqUoyji2CZlJKXSXFty7SbC6ihCRYbATbdDUmsUdSkpDkkVA9X8nkTwy2xQekNffnHC4+sq8lPvUjgkbu3bCVdMfDfSlh0N/4hbUEZ7Ota3piqpcs5n8Tn5Y5HTQ0ckVAHwSWI3HoUH/bGFaLSJ2yUr+wR/LFI6uNNHpR9tlayqXWoJUlVzgvYBSeG7LZHQsTknFl6UoVFdIYlaG08/3GW/Yo+6PCtCKcf7lL/s0/dEgghbsrhXBB6lT6CwstvNyTawASlSUg2OzKNtK0XosyC6wxLupSrCSjNIVYGxANr2IOzfFWa4B+M3PiI9UTjUKr3LMD/wBxs/7aPu9EUcbRvc541FKo4WJO5q+ph/ubXdceoiPH4OKXa3giPpLv58V4lUETxPkvgjwV7XKXQJVSWphllCrXAsq5Gy5IzPeYUUCQoc2VIl5eWcKEgqHR5gbL5j0xBdeX5638j9phTqG/OZj5IfWiuHy3uc6qf9cFkWV/6Hpv6lL/ALMQ26S6EU8SrxRKMoUltRSpKQkggEggjOJnCCvpvLPj/JX9UxJNnQ4q2hFdTDl6W2ODjg/fJ+2CM6mVA0poDctwHt6RR9REEGWrBT6UINUyQJiqDhNq3398554seK51XKtOVVFiD4Uo92NyLGjT1BS6QjmnWNMFdSmiTezmEdiQEgeiOlo5h05/SM38uv1xSjqR+L6UTnUXTG1qfeW2FLQUhCiL4bgk4eB5xItdVOaMiXi2npULQErtmAVAEX3i26EGoUe55n5YfUESvWPRHpySWwwElZWgjEbCwUCc7HdAk/OGEb0bFJ6s5no6pKnispPzkKT6yPNFq661fi4ji6j1xD9ENW1QZnGHnUNpQ06FKu4CSB5ITf02iW67j+Lx8qmGk05qwlOMo0pJlPaHSaXp6WbWAUqeTiB3gG5HojpipS4Wy42RkptSbdoIjm/V/wDpKU+WH2x0yRArah+EXlZyQvqk296cu4x1ZR3CphpR2ltJP0RFGO6qakpSjgaAKja7o2XyOQOXpi8KBKLalmWnCCtDYSog3FwNxMaq07WN8NCUW7oXwQQRE6ygddSAKkbb2EE9t1j7BEt1CE+DzPDph58Cb/ZEU12/pIf6dH1nIk+oNZ6GaFsg6gg8yk3HoHni7/TOKH7hlqwQQRA7Sh9d593p5Mj1mF2ob85mfkk/WhDrv/P0/Ij1mHHUK37dMq/y0j968dD/AEzgX7gueEdZB8Hett6Jf1TCyE9R/JOfEV6jHOdz0IRqSV+LbcHnB6j9sZg1KptT1HjMOH6o+yMw0+pi0uhGjVy2RUarmCPCD5ypR2eiLEiDaAI921b/AFQ9RMTmNLU1NWiEcx6eptUZsf56j5zeOnI5k0//AElN/LKilHU5/i+lFlahfzeZ+WH1BE+0hrjUmyX3sWAEDqi5uTYZRANQv5vM/LD6gh71xgexbt/Lbt+0TCyV52KU3alf0NlG1lyUy+2w30uNw2TdBtexOfDIGEWuxP4uvwdR64rDVY0VVWVtuKyewNLi0ddZ/Fx+VR64LiozSQkajnSbZUursfjOU+VHqMdMRzNq9WBUpQn/ABQPOCB646ZjVtTfCdLILNa16eglOJ1RSSDZs7sol9Kn0vsoeRfC4kKTcWNjxEcr1H8q58dX1jHTGhLeGQlha1mU5d0acFFZBo1ZTk0yHr1zSgP5B/8Ad++LEkZkOtocTey0hQvtsReOU6k0UOuoIsUuLSRzCiCPRHT+izgVJy5BuC0mx45CNUiksjUKsptqRS+u39JD/To+s5El1BA9FN+T0iLduFV/Rh80RvXd+kh/p0fWciVahPzeZ+WH1BDP9MnD9wxRWdbTbD7rBlnFdGspJCk523xNdGKymclW5lKSgOA9U7RZRSdnMRz5rEYwVKaGf5S4vzSkxcmqB9KqUwAblCnEqHA9KtVj3EHvhZxSimilKrKVRxZXeu8e70fIj1mHXUJ4818VPrMNOu50GfSkEXS0L95Jh41CNnFNK3WQO/Mw7/TJR/cFwQnqKbtODihXqMKI1zIuhXxT6o5zuZB9S/6OI4PuesQRjUwPcLn+qcv+7BDS1Ep9KNOgs5arVVni4F+bq/bFhxV2hKCa9UVDYCb+cCLRjT1BSfl+oRzzrboy2KgtZHUmPbEHicgtPaD6FCOhoYtL9Fmagz0TtwUnE2tPjIVsy4g7CDt7QCDCWFgrU8cbFN6tdOEU/pUOoUpDhCgU7QoC3mtaN+sjWAmeQlhhKktBWJZVtURsFuA29to9VLVFPIUeiU26nccWE94Vv740SGqeoLXhWG2k3zUVg+YJzMW8l8RyWrYcFhVqPp5XPLet1WmSL/CWQB6AqLH1p0lUxT3EoF1IIcA44TcjzQ56JaNNSDHQtXNziWs7Vq2XPDZa0PcRlO8ro6qdK1PCzkqUmVNrS4g4VIUFJI3EG4MWE7rhmy0UdE0FlNukBOR8oJ2XiYaVaqZeZWp1hfQOKzUkC7ajxtkUnsy5RGGNTEwVdeZZCeKUqJ8xt64rihLU5VSrQyiV5SacuafQygErcVbz+Mo8gLmOp5NgNtobGxCQnzACI5oZoNL08FSLuPKFlOrte3koAySnfvJ3k2FpTE6k8TyOmhScFnqc861tHVSs6twA9FMKLiFbgs5uIPO9yOR5GFOh2s12TZDC2g6hPiHFZSR5PMReNVpjMy2Wn20uIVtSoekbweYziv57UzKqN2n3mxwOFY7rgHzkwynFq0icqM4yxUyp9Ka85OzC5hwAEgAJGxKRsSOO898XnqooipWQSHE4XHVF1QO0XsEg88ITlCfRzVbJSy0uqK33Em6S4RhB3EJAtftvE5gTmmrIajRlFuUtSoNdWi6ytM60gqThwvWF8NvFWRw3E9kV3QNJpqTxeDulAX4ybXSTxsd/OOoiIi0/q6pjyitUqkKO3AtaBfjhQoJv3Ro1FazBUoNyxRdjnicmnX3StZU464rhdSlHIAAbTusI6B1YaMqkpSzos86cax5OXVQeYG3mTDrRNEpKUOKXl0IV5ZupXcpZKgOV4e4E6l8kNRoYHibzCNM7+TX8U+oxujROmzaz8A+oxM6GU7qzrS2Zd5ITivMqVfngbH2QQ06FVRDTToWUgl9RzPwUD7IIu45nHGdlqSFUxNUqpzb65R19qYUSlbYJGEqxAXAIBGyxtshyOuJgbZV8HujEECKUtTVJSpZRZ5XrkZtlKPHvH3Rg64E5e4H87Wz234dXOMwQzpxEVeb3D8L6Qc5B8Z227+Hi7Y8K1yIvbwJ697WxC/1dvKCCMoRM681ubFa2z/06Y85/kjB1vi2LwB/Dxvl58NoIIGCIzqz5MNa3SsHo6e+r4puO+yYyjWZOKF00qYUOIQ4R6EQQQJJLYenKU9WH4R5/K1Imeftbvo6kYOsmft+iZj9m7/JBBCXXBXDLk1nWlN7qY9f4q9v0IyrWNUj4tJetvu07s+hBBBdlsLHE9wOsapX/AES/b5J2/wBSFbGsibCbu0ib7UoWBbndEEEC64GwyW5r/Cwf+mzPp/kjUNcAJsJB8q3jFn5sN4IIooxOd1Zrc8K1yp/UnefXH8sYOuQZWkXPpf8A5gghvDiJ48+TaNbijspz5vszOf7kJZ7T+ozKFNS1NeBWCnEULNgcr3KQkdpMEEI0lsWhKU8ri3RzVM0lhPhSll5WaghVkpv70cbceN4IIInjlyWVGHB//9k=" alt="Centre Cardiovasculaire Jean Jaurès">
+        <div class="ref-name">Centre Cardiovasculaire Jean Jaurès</div>
+        <div class="ref-loc">Lyon · 13 cardiologues · 3 sites</div>
+        <div class="ref-tel"><a href="tel:0478026793">04 78 02 67 93</a></div>
+        <div class="ref-note">Voix Vocca différente des autres lignes</div>
+      </div>
+      <div class="ref-card">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4NCIgdmlld0JveD0iMCAwIDE4MCAxODQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNODMuNTczOSAwLjIyOTUxMkMxMDMuNTg5IC0xLjIwMTUxIDEyMy41MSA0LjA4OTM3IDE0MC4xNyAxNS4yNjE2QzE1Ni44MjkgMjYuNDMzOSAxNjkuMjczIDQyLjg0NjcgMTc1LjUyMyA2MS44OTIyQzE4MS43NzMgODAuOTM3OCAxODEuNDcxIDEwMS41MjMgMTc0LjY2NSAxMjAuMzc4QzE2Ny44NTggMTM5LjIzMiAxNTQuOTM4IDE1NS4yNzMgMTM3Ljk1OCAxNjUuOTUzQzEzMy40NDUgMTY4Ljc5MSAxMjguOTQzIDE3MC41MDkgMTI0LjM0MiAxNzAuOTUxQzExOS43MTIgMTcxLjM5NSAxMTUuMzExIDE3MC41MTYgMTExLjA3NSAxNjguNjQ1QzEwMi44NyAxNjUuMDIxIDk1IDE1OC41IDgzLjUgMTQ0LjVMODMuNTI1MyAxNDQuNDkyQzgzLjQwMzQgMTQ0LjM1IDgzLjI3OTggMTQ0LjIwNiA4My4xNTQ0IDE0NC4wNTlDNzkuODk4OSAxNDAuMjU5IDc1LjQ4MSAxMzUuMDc2IDcwLjgzNDcgMTI5LjU0OEM2MS42NTE1IDExOC42MjEgNTEuMjQ5NSAxMDUuOTY2IDQ3LjQzMjMgMTAwLjE5M0M0MS4wODQ4IDkwLjU5MjkgMzkuMDUyOSA4MC45NTk1IDQwLjM5MTcgNzIuMjc2OUM0MS43MjEzIDYzLjY1NDYgNDYuMzA3IDU2LjQyNjQgNTIuNDA0OSA1MS40NjM2QzYzLjMyODcgNDIuNTczMiA3OS45MjExIDQwLjUyMzkgOTIuMjIwNiA1MS40MTE1Qzk3Ljc2NTIgNDYuNTExNSAxMDQuMjM3IDQ0LjI2NTUgMTEwLjcyNSA0NC4yNDc2QzExOC42MzYgNDQuMjI1NyAxMjYuMjk0IDQ3LjUwNDQgMTMyLjIxNCA1Mi43MjY4QzEzOC4xNDUgNTcuOTU5IDE0Mi41NjcgNjUuMzUxMiAxNDMuNzExIDczLjg0OTVDMTQ0Ljg2OSA4Mi40NTE3IDE0Mi42MDYgOTEuNzQzNyAxMzUuOTA1IDEwMC40ODRDMTMwLjc3MiAxMDcuMTc4IDEyMC43ODUgMTE5LjYyMiAxMTIuMTIyIDEzMC4zNDRDMTA3Ljc4MiAxMzUuNzE2IDEwMy43NiAxNDAuNjcyIDEwMC44MjQgMTQ0LjI4NkMxMDAuMTI4IDE0NS4xNDEgOTkuNDkzOSAxNDUuOTIxIDk4LjkzMDQgMTQ2LjYxNEMxMDUuMTczIDE1My4wMDEgMTEwLjM2MiAxNTcuMjM5IDExNS4xODEgMTU5LjM2N0MxMTguMDY1IDE2MC42NDEgMTIwLjcyMSAxNjEuMTA4IDEyMy4zNzEgMTYwLjg1NEMxMjYuMDQ5IDE2MC41OTcgMTI5LjA0OSAxNTkuNTcgMTMyLjU0OCAxNTcuMzY5QzE0Ny42MTMgMTQ3Ljg5NCAxNTkuMDc1IDEzMy42NjMgMTY1LjExMyAxMTYuOTM2QzE3MS4xNTEgMTAwLjIxIDE3MS40MTkgODEuOTQ4MSAxNjUuODc1IDY1LjA1MjFDMTYwLjMzIDQ4LjE1NjEgMTQ5LjI5MSAzMy41OTUzIDEzNC41MSAyMy42ODM1QzExOS43MyAxMy43NzE2IDEwMi4wNTcgOS4wNzc0NyA4NC4yOTg4IDEwLjM0NzFDNjYuNTQwOSAxMS42MTY3IDQ5LjcxNzQgMTguNzc3MiAzNi41MDE0IDMwLjY5MDZDMjMuMjg1NSA0Mi42MDQgMTQuNDM1MyA1OC41ODY4IDExLjM1NjggNzYuMDk5MkM4LjI3ODMzIDkzLjYxMTYgMTEuMTQ4MiAxMTEuNjQ5IDE5LjUxMDQgMTI3LjM0NkMyNy43NDg1IDE0Mi44MSA0MC44NTE2IDE1NS4xMjggNTYuNzg3OSAxNjIuNDA4QzU4Ljc5NTYgMTYwLjg5NiA2MS4yOTMxIDE2MCA2NCAxNjBDNzAuNjI3NCAxNjAgNzYgMTY1LjM3MyA3NiAxNzJDNzYgMTc4LjYyNyA3MC42Mjc0IDE4NCA2NCAxODRDNTcuMzcyNiAxODQgNTIgMTc4LjYyNyA1MiAxNzJDNTIgMTcxLjc5MiA1Mi4wMDUzIDE3MS41ODUgNTIuMDE1OCAxNzEuMzhDMzQuMzAxNCAxNjMuMTQzIDE5LjczOCAxNDkuMzY1IDEwLjU0NjggMTMyLjExMkMxLjEyMDgzIDExNC40MTggLTIuMTE0MTYgOTQuMDg1MyAxLjM1NTk5IDc0LjM0NDhDNC44MjYxMyA1NC42MDQyIDE0LjgwMjMgMzYuNTg4NCAyOS42OTkgMjMuMTU5OUM0NC41OTU3IDkuNzMxNDEgNjMuNTU4NCAxLjY2MDU0IDgzLjU3MzkgMC4yMjk1MTJaTTY0IDE3Ni45NDFDNjEuMjcxMSAxNzYuOTQxIDU5LjA1ODggMTc0LjcyOSA1OS4wNTg4IDE3MkM1OS4wNTg4IDE2OS4yNzEgNjEuMjcxMSAxNjcuMDU5IDY0IDE2Ny4wNTlDNjYuNzI4OSAxNjcuMDU5IDY4Ljk0MTIgMTY5LjI3MSA2OC45NDEyIDE3MkM2OC45NDEyIDE3NC43MjkgNjYuNzI4OSAxNzYuOTQxIDY0IDE3Ni45NDFaTTU1LjY1NTUgOTQuNDI5NkM1MC41Mzk2IDg2LjY5MjMgNDkuMzI1OSA3OS42NTc2IDUwLjIxNjQgNzMuODgyOEM1MS4xMTYyIDY4LjA0NzcgNTQuMjM1MSA2My4wMjkzIDU4LjU3MzkgNTkuNDk4MUM2Ny4zNDk4IDUyLjM1NTggODAuMTAyNyA1MS44MzI5IDg4LjQyMjggNjEuOTgzMkM4OS4zNjk0IDYzLjEzOCA5MC43NjMxIDYzLjgwMzUgOTIuMjMwOSA2My44MDE0QzkzLjY5ODYgNjMuNzk5MyA5NS4wOTA2IDYzLjEyOTkgOTYuMDM0MSA2MS45NzIzQzEwMC40IDU2LjYxNTkgMTA1LjYzNCA1NC41MDM0IDExMC43NTIgNTQuNDg5MkMxMTUuOTk5IDU0LjQ3NDcgMTIxLjQwNiA1Ni42Nzk1IDEyNS43NDEgNjAuNTAzOUMxMzAuMDY1IDY0LjMxODQgMTMzLjA4NyA2OS41MzY0IDEzMy44NTcgNzUuMjU1NUMxMzQuNjEzIDgwLjg3MDcgMTMzLjI2IDg3LjQwMzIgMTI4LjA5NiA5NC4xMzg0QzEyMy4wNTggMTAwLjcwOSAxMTMuMTU3IDExMy4wNDkgMTA0LjQ3NSAxMjMuNzk1QzEwMC4xNDIgMTI5LjE1NyA5Ni4xMjY3IDEzNC4xMDUgOTMuMTk0MyAxMzcuNzEzTDkyLjExNzggMTM5LjAzN0M5MS42NTEgMTM4LjQ5NCA5MS4xNDg3IDEzNy45MDggOTAuNjE1MSAxMzcuMjg1Qzg3LjM3MyAxMzMuNSA4Mi45NzY4IDEyOC4zNDMgNzguMzU3MSAxMjIuODQ2QzY5LjAwODIgMTExLjcyMyA1OS4wNzAyIDk5LjU5NCA1NS42NTU1IDk0LjQyOTZaIiBmaWxsPSIjRTMzNDQ1Ii8+Cjwvc3ZnPgo=" alt="Cabinet de Cardiologie Pau Béarn" style="height:44px">
+        <div class="ref-name">Cabinet de Cardiologie Pau Béarn</div>
+        <div class="ref-loc">16 praticiens · 4 sites</div>
+        <div class="ref-tel"><a href="tel:0559000777">05 59 00 07 77</a></div>
+        <div class="ref-note">Composez, puis tapez 1 · déjà testé par Mme Dray</div>
+      </div>
+    </div>
+
+    <div class="test-line" data-reveal>
+      <div class="t">&#128222; <b>Testez Vocca</b> sur la ligne du Cabinet de Cardiologie Pau Béarn — composez le numéro puis tapez 1.</div>
+      <a href="tel:0559000777">05 59 00 07 77</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Conditions tarifaires</div>
+      <h2>20 agendas facturés sur 26 — 6 forfaits offerts au regard du nombre.</h2>
+      <p>Le tarif de base de Vocca est de <b style="color:var(--ink)">150&nbsp;€&nbsp;TTC / mois / agenda</b>. Vocca s'adapte bien à chaque protocole et à chaque agenda individuellement — chaque praticien garde ses propres règles de tri. Mais compte tenu du nombre de praticiens du groupe, nous ne facturons que <b style="color:var(--ink)">20 agendas</b> sur les 26 : <b style="color:var(--ink)">6 forfaits sont offerts</b>.</p>
+    </div>
+    <div class="pill-row" data-reveal>
+      <span class="pill">Appels entrants illimités</span>
+      <span class="pill">Appels sortants illimités</span>
+      <span class="pill">Dashboard inclus</span>
+      <span class="pill">Sans engagement</span>
+    </div>
+
+    <div class="price-card" data-reveal>
+      <div class="node"></div>
+      <div>
+        <div class="vol">Tarif de base</div>
+        <div class="price">150&nbsp;€ <span class="ht">TTC</span></div>
+        <div class="note">par agenda / par mois — 20 agendas facturés sur 26, chaque protocole reste paramétré individuellement</div>
+      </div>
+    </div>
+
+    <div class="devis" data-reveal>
+      <div class="devis-head">
+        <div class="devis-label">Offre ajustée au nombre</div>
+        <div class="devis-title">Groupe de Cardiologie — 20 agendas facturés sur 26</div>
+      </div>
+      <div class="devis-rows">
+        <div class="devis-row"><span>Facturation classique — 26 agendas &times; 150&nbsp;€</span><b>3 900&nbsp;€ / mois</b></div>
+        <div class="devis-row"><span>Facturation proposée — 20 agendas &times; 150&nbsp;€</span><b>3 000&nbsp;€ / mois</b></div>
+        <div class="devis-row reduc"><span>6 forfaits offerts du fait du nombre</span><b>&minus;900&nbsp;€ / mois</b></div>
+        <div class="devis-row"><span>Frais de mise en service <span class="devis-once">unique</span></span><b>900&nbsp;€</b></div>
+        <div class="devis-row tot"><span>Abonnement mensuel proposé</span><span class="big">3 000&nbsp;€&nbsp;TTC<span class="big-sub">&nbsp;/&nbsp;mois</span></span></div>
+      </div>
+      <div class="devis-note">Soit <b>10 800&nbsp;€ d'économie sur 12 mois</b> par rapport à une facturation classique agenda par agenda (&minus;23&nbsp;%). Chaque agenda reste configuré selon son propre protocole — seul le nombre d'agendas facturés est ajusté. Chiffres indicatifs, à confirmer avec l'équipe. Facturation de l'abonnement uniquement à partir de la mise en production.</div>
+    </div>
+
+    <div class="card roi" data-reveal style="max-width:680px;margin:32px auto 0">
+      <div class="k">Simulateur — temps de secrétariat libéré</div>
+      <div class="roi-tool" style="border-top:none;padding-top:0">
+        <div class="roi-label">Volume d'appels entrants / mois <b id="roiVolVal">12 256</b></div>
+        <input id="roiVol" class="roi-range" type="range" min="8000" max="16000" step="50" value="12256" aria-label="Appels entrants par mois">
+      </div>
+      <div class="roi-compare">
+        <div class="side"><div class="t">Appels automatisables (75%)</div><div class="v" id="roiAutoOut">9 192</div></div>
+        <div class="arrow">&rarr;</div>
+        <div class="side vocca"><div class="t">Durée moy. estimée</div><div class="v">4,5&nbsp;min</div></div>
+      </div>
+      <div class="roi-out">
+        <span>Temps secrétariat libéré estimé / mois</span>
+        <b id="roiSaveMonth">689&nbsp;h</b>
+      </div>
+      <div class="roi-month">soit environ <span id="roiEtp">4,5</span> ETP secrétariat — estimation à affiner ensemble</div>
+    </div>
+
+    <ul class="cond" style="margin-top:32px">
+      <li data-reveal><span class="ic">&euro;</span><span><b>3 000&nbsp;€&nbsp;TTC / mois</b> pour 20 agendas facturés, contre 3 900&nbsp;€ pour les 26 agendas du groupe.</span></li>
+      <li data-reveal><span class="ic">&#128260;</span><span><b>6 forfaits offerts</b> du fait du nombre — chaque agenda garde son propre protocole de paramétrage, seule la facturation est ajustée.</span></li>
+      <li data-reveal><span class="ic">&#9654;</span><span><b>Facturation à la mise en production uniquement</b> — test préalable sur numéro dédié.</span></li>
+      <li data-reveal><span class="ic">&#9881;</span><span><b>Frais de mise en service&nbsp;: 900&nbsp;€&nbsp;TTC</b> à titre indicatif, réglés à la configuration.</span></li>
+      <li data-reveal><span class="ic">&#10003;</span><span><b>Sans engagement, résiliation libre</b> à tout moment.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Déploiement</div>
+      <h2>Opérationnel en 2 semaines.</h2>
+      <p>Un atelier avec vous et un cardiologue référent suffit à poser les règles métier avant les tests.</p>
+    </div>
+    <div class="phases">
+      <div class="phase" data-reveal>
+        <div class="num"></div>
+        <h3>Configuration</h3>
+        <p>Tri par motif et par praticien, distinction patients / professionnels de santé, signaux d'urgence. Connexion Doctolib via API.</p>
+        <div class="meta">Dès validation · sans facturation</div>
+      </div>
+      <div class="phase" data-reveal>
+        <div class="num"></div>
+        <h3>Tests &amp; calibration</h3>
+        <p>Tests sur numéro dédié, ajustements selon les retours du secrétariat, formation au dashboard.</p>
+        <div class="meta">Semaines 1–2 · zéro facturation</div>
+      </div>
+      <div class="phase" data-reveal>
+        <div class="num"></div>
+        <h3>Mise en production</h3>
+        <p>Bascule sur vos numéros, après validation des praticiens. Monitoring renforcé 5 jours, point de suivi à J+30.</p>
+        <div class="meta">J+14 après validation · facturation démarre</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="gain-card" data-reveal>
+      <div class="k">Prochaines étapes</div>
+      <div class="big">10 septembre</div>
+      <p>Vous portez le sujet auprès des praticiens lors de votre réunion de rentrée. Point de suivi calé au <b style="color:#fff">jeudi 10 septembre à 10h</b> (visio, 15 min) pour échanger sur leurs retours.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sign">
+      <div class="from">
+        <div class="name">Pauline Darmenté</div>
+        <div class="role">Responsable commerciale — Vocca<br><a href="mailto:pauline.darmente@vocca.com">pauline.darmente@vocca.com</a></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:18px;background:var(--mist);border:1px solid var(--line);border-radius:14px;padding:16px 24px;">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Préparé pour</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:16px;color:var(--cp-navy)">Groupe de Cardiologie — Clinique Pasteur</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:2px;">Mme Dray — Responsable administrative &amp; financière</div>
+        </div>
+      </div>
+      <div class="vmark">Vocca<span class="dot"></span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Vocca SAS — 7 rue Mariotte, 75017 Paris</span>
+    <span>Document confidentiel — préparé pour le <span style="color:var(--cp-navy);font-weight:600">Groupe de Cardiologie, Clinique Pasteur Toulouse</span>. Diffusion restreinte.</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-reveal]');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+
+  (function(){
+    var volRange = document.getElementById('roiVol');
+    if(!volRange) return;
+
+    var AUTO_RATE = 0.75;
+    var AVG_MIN = 4.5;
+    var ETP_HOURS_MONTH = 151.67;
+
+    var volVal = document.getElementById('roiVolVal');
+    var autoOut = document.getElementById('roiAutoOut');
+    var saveMonth = document.getElementById('roiSaveMonth');
+    var etpOut = document.getElementById('roiEtp');
+
+    function fmt(n){
+      return Math.round(n).toLocaleString('fr-FR').replace(/\u202f|\s/g,' ');
+    }
+
+    function update(){
+      var vol = parseInt(volRange.value,10);
+      volVal.textContent = fmt(vol);
+      var autoCalls = vol * AUTO_RATE;
+      autoOut.textContent = fmt(autoCalls);
+      var hours = (autoCalls * AVG_MIN) / 60;
+      saveMonth.textContent = fmt(hours) + ' h';
+      etpOut.textContent = (hours / ETP_HOURS_MONTH).toFixed(1).replace('.', ',');
+    }
+
+    volRange.addEventListener('input', update);
+    update();
+  })();
+</script>
+</body>
+</html>
